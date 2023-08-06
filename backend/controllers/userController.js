@@ -69,7 +69,13 @@ const logoutUser  = asyncHandler(async (req, res) => {
 //          Get user profile
 //          GET /api/users/profile
 const getUserProfile  = asyncHandler(async (req, res) => {  
-    res.status(200).json({messzge : 'Profile User'})
+    const user = {
+        _id: req.user._id,
+        name: req.user.name,
+        email: req.user.email,
+    }
+
+    res.status(200).json( user );
 });
 
 //          Update user profile
